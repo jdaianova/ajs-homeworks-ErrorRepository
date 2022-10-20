@@ -1,17 +1,19 @@
-const arrOfErrors = new Map;
+const arrOfErrors = new Map();
 
-export default class CodesErrors {
+export class CodesErrors {
   constructor(codeOfError, nameOfError) {
     this.codeOfError = codeOfError;
     this.nameOfError = nameOfError;
-      
-    arrOfErrors.set(this,{
+
+    arrOfErrors.set(
       codeOfError,
       nameOfError,
-      });
+    );
   }
+}
 
-  translate(code) {  
-    return code;
-  }
+export function translate(code) {
+  if ([...arrOfErrors.keys()].includes(code)) {
+    return arrOfErrors.get(code);
+  } return 'Unknown error';
 }
